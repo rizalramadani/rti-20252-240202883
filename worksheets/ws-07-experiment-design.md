@@ -106,13 +106,13 @@ Statistical Plan:
 
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
-**RQ:** __________________________________________________
+**RQ:** Apakah metode Naive Bayes menghasilkan F1-Score lebih tinggi dibandingkan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset?
 **Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [ ] Parameter
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | *Contoh: RF baseline dari literatur* | *RF* | *Dataset X, 80:20 split, seed 42* |
-| Treatment | | | |
+| Control | Baseline metode klasifikasi menggunakan KNN | K-Nearest Neighbor | SpamAssassin Dataset, split 80:20, preprocessing sama, seed 42 |
+| Treatment |Metode klasifikasi menggunakan Naive Bayes |Naive Bayes |SpamAssassin Dataset, split 80:20, preprocessing sama, seed 42 |
 
 ---
 
@@ -122,14 +122,14 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 | Kriteria | Status | Detail |
 |----------|--------|--------|
-| Dataset identik | *Contoh: ✅ — sama-sama pakai CIC-MalMem-2022* | |
-| Preprocessing setara | | |
-| Tuning effort setara | | |
-| Environment identik | | |
-| Metrik evaluasi sama | | |
+| Dataset identik | ✅ |Kedua metode menggunakan SpamAssassin Dataset yang sam |
+| Preprocessing setara |✅ |Cleaning, tokenizing, stopword removal, dan TF-IDF sama |
+| Tuning effort setara |✅ |Kedua model menggunakan parameter tuning sederhana dengan effort yang sebanding |
+| Environment identik |✅ |Eksperimen dijalankan pada perangkat dan environment Python yang sama |
+| Metrik evaluasi sama |✅ |Accuracy, Precision, Recall, dan F1-Score digunakan pada kedua metod |
 
-**Ada yang tidak fair?** [ ] Ya / [ ] Tidak
-> Jika ya, bagaimana cara memperbaikinya? ________________
+**Ada yang tidak fair?** [ ] Ya / [✓ ] Tidak
+> Jika ya, bagaimana cara memperbaikinya?Semua kondisi eksperimen telah dibuat identik sehingga perbandingan lebih valid dan objektif.
 
 ---
 
@@ -139,14 +139,14 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal | *Contoh: Data leakage antara train-test* | *Contoh: Gunakan stratified split, validasi tidak ada overlap* |
-| External | | |
-| Construct | | |
-| Conclusion | | |
+| Internal | Data leakage antara data training dan testing | Menggunakan stratified train-test split dan memastikan tidak ada overlap |
+| External |Dataset hanya email bahasa Inggris |Menambahkan dataset multi-bahasa pada penelitian lanjuta |
+| Construct |F1-Score belum sepenuhnya menggambarkan efisiensi sistem |Menambahkan execution time sebagai secondary metric |
+| Conclusion |Jumlah sampel terbatas sehingga hasil kurang stabil |Menggunakan cross-validation dan beberapa pengulangan eksperimen |
 
-**Ancaman mana yang paling sulit dimitigasi?** _____________
+**Ancaman mana yang paling sulit dimitigasi?** External Validity
 **Mengapa?**
-> ___________________________________________________
+> Karena dataset yang tersedia mayoritas menggunakan email bahasa Inggris sehingga sulit memastikan hasil penelitian dapat digeneralisasi ke email multi-bahasa atau konteks lokal Indonesia tanpa pengumpulan data tambahan.
 
 ---
 
@@ -155,6 +155,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. ___________________________________________________
-2. ___________________________________________________
-3. ___________________________________________________
+1. Apakah semua baseline dibandingkan menggunakan dataset, preprocessing, dan environment yang identik?
+2. Apakah baseline yang dipilih merupakan metode relevan dan representatif dari literatur terbaru?
+3. Apakah peningkatan performa yang dilaporkan signifikan secara statistik dan bukan hanya kebetulan eksperimen?

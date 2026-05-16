@@ -105,18 +105,18 @@ Experimental Setup:
 
 ## Latihan 1 — Variable-to-Component Mapping
 
-Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
+Apakah metode Naive Bayes menghasilkan F1-Score lebih tinggi dibandingkan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset?
 
 **RQ:** __________________________________________________
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
 |----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| Jenis algoritma | IV | Modul classifier | Mengubah parameter model_type = NB / KNN pada config |
+|Performa klasifikasi | DV |Modul evaluasi dan metrics collector |Menghitung Accuracy, Precision, Recall, dan F1-Score |
+|Dataset email | CV |Modul dataset loader |Dataset dikunci menggunakan SpamAssassin Dataset |
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
-> Jika tidak, komponen apa yang perlu ditambahkan? _________
+**Apakah semua variabel bisa di-map?** [✓ ] Ya / [ ] Tidak
+> Jika tidak,
 
 ---
 
@@ -126,14 +126,14 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Traceability |✅ |Setiap komponen sistem terkait langsung dengan variabel penelitian |
+| Modularity |✅ |Modul classifier dapat diganti antara NB dan KNN tanpa mengubah modul lain |
+| Controllability |✅ |Dataset dan parameter eksperimen disimpan pada config file |
+| Measurability |✅ |Sistem otomatis menghasilkan confusion matrix dan metrik evaluasi |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** Modularity
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Menggunakan arsitektur berbasis module/class sehingga algoritma classifier dapat di-swap hanya dengan mengubah konfigurasi tanpa mengubah kode utama sistem.
 
 ---
 
@@ -146,14 +146,14 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 
 | Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | Performa optimal sistem |
+| – A | ❌ (ganti RF) | ✅ | ✅ |Mengetahui pengaruh algoritma terhadap performa |
+| – B | ✅ | ❌ (tanpa temporal) | ✅ |Mengukur kontribusi TF-IDF terhadap akurasi |
+| – C | ✅ | ✅ | ❌ (tanpa normalisasi) |Mengukur pengaruh preprocessing terhadap hasil klasifikasi |
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen B — TF-IDF Feature Extraction
 **Mengapa?**
-> ___________________________________________________
+> TF-IDF membantu merepresentasikan kata-kata penting pada email spam sehingga model lebih mudah membedakan email spam dan non-spam. Tanpa feature extraction yang baik, performa klasifikasi diperkirakan turun signifikan.
 
 ---
 
@@ -162,5 +162,5 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Jika sistem dibangun seperti produk monolitik dengan banyak fitur tambahan, maka eksperimen menjadi sulit dikontrol karena perubahan satu komponen dapat memengaruhi komponen lain. Hal ini membuat hubungan sebab-akibat antar variabel menjadi tidak jelas.
+> Arsitektur modular penting dalam riset karena memungkinkan isolasi variabel, pengujian yang reproducible, serta mempermudah eksperimen seperti perbandingan metode dan ablation study tanpa harus mengubah keseluruhan sistem

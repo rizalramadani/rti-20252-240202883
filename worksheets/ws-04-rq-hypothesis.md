@@ -103,24 +103,24 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** ____________________________________
+**Gap dari WS-03:**Sebagian besar penelitian klasifikasi email spam masih menggunakan dataset email bahasa Inggris dan belum banyak membandingkan performa Naive Bayes dan K-Nearest Neighbor pada dataset email modern dengan pola spam yang terus berubah.
 
 **RQ versi pertama (tulis bebas):**
-> ___________________________________________________
+> Bagaimana perbandingan performa Naive Bayes dan K-Nearest Neighbor dalam klasifikasi email spam?
 
 **Evaluasi RQ:**
 
 | Komponen | Ada? | Isi |
 |----------|------|-----|
-| Metode spesifik | *Contoh: Ya — CNN vs RF* | |
-| Metrik terukur | | |
-| Baseline | | |
-| Dataset/konteks | | |
+| Metode spesifik | ya |Naive Bayes vs K-Nearest Neighbor |
+| Metrik terukur |ya |Accuracy, Precision, Recall, F1-Score |
+| Baseline | ya|KNN sebagai pembanding NB |
+| Dataset/konteks |ya |Dataset email spam modern (SpamAssassin / Enron Dataset) |
 
-**Tipe RQ:** [ ] Comparison / [ ] Improvement / [ ] Exploratory
+**Tipe RQ:** [✓ ] Comparison / [ ] Improvement / [ ] Exploratory
 
 **RQ versi revisi (setelah evaluasi):**
-> ___________________________________________________
+> Apakah metode Naive Bayes menghasilkan F1-Score lebih tinggi dibandingkan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset?
 
 ---
 
@@ -130,14 +130,14 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
 | Komponen | Isi |
 |----------|-----|
-| H₀ | *Contoh: Tidak ada perbedaan signifikan F1-Score antara CNN dan RF pada dataset CIC-MalMem-2022* |
-| H₁ | |
-| Metrik | |
-| Threshold | |
-| Justifikasi threshold | |
+| H₀ | Tidak ada perbedaan signifikan F1-Score antara Naive Bayes dan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset |
+| H₁ |Naive Bayes menghasilkan F1-Score yang lebih tinggi dibandingkan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset |
+| Metrik |Accuracy, Precision, Recall, F1-Score |
+| Threshold |α = 0.05 |
+| Justifikasi threshold |Nilai signifikansi 0.05 umum digunakan dalam penelitian machine learning untuk menentukan apakah perbedaan performa signifikan secara statistik |
 
-**Apakah hipotesis ini falsifiable?** [ ] Ya / [ ] Tidak
-> Bagaimana cara membuktikannya salah? ___________________
+**Apakah hipotesis ini falsifiable?** [✓ ] Ya / [ ] Tidak
+>  Dengan melakukan eksperimen pada dataset SpamAssassin dan menghitung F1-Score kedua metode. Jika hasil uji statistik menunjukkan tidak ada perbedaan signifikan atau KNN memiliki performa lebih baik, maka H₁ ditolak dan H₀ diterima.
 
 ---
 
@@ -147,14 +147,14 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 | Tahap | Isi |
 |-------|-----|
-| RQ | *Contoh: Apakah CNN menghasilkan F1-Score lebih tinggi dari RF...* |
-| Variable (IV) | *Contoh: Jenis algoritma (CNN vs RF)* |
-| Variable (DV) | |
-| Metric | |
-| Data source | |
-| Analysis method | |
+| RQ | Apakah Naive Bayes menghasilkan F1-Score lebih tinggi dibandingkan KNN pada klasifikasi email spam menggunakan SpamAssassin Dataset? |
+| Variable (IV) | Jenis algoritma klasifikasi (Naive Bayes vs KNN) |
+| Variable (DV) |Performa klasifikasi email spam |
+| Metric |Accuracy, Precision, Recall, F1-Score |
+| Data source |SpamAssassin Dataset dan Enron Email Dataset |
+| Analysis method |Perbandingan hasil confusion matrix dan uji statistik performa model |
 
-**Apakah rantai lengkap?** [ ] Ya / [ ] Tidak
+**Apakah rantai lengkap?** [✓ ] Ya / [ ] Tidak
 > Jika tidak, tahap mana yang perlu direvisi? ______________
 
 ---
@@ -163,6 +163,8 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** _____________________________________________
-**RQ yang diekstrak:** __________________________________
-**Komponen yang hilang:** _______________________________
+**Judul:** Comparison of Navie Bayes and K-Nearest Neighbor for Email Spam Classification
+**RQ yang diekstrak:** Apakah Naive Bayes memiliki performa lebih baik dibandingkan K-Nearest Neighbor dalam klasifikasi email spam?
+**Komponen yang hilang:** Dataset spesifik tidak disebutkan pada judul
+Metrik evaluasi belum disebutkan secara eksplisit
+Belum ada konteks mengenai jenis email atau ukuran dataset yang digunakan

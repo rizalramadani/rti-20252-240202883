@@ -123,20 +123,20 @@ Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan databas
 > - Tulis query Boolean yang digunakan: contoh `("object detection" OR "image classification") AND ("edge computing") NOT ("medical")`. Dokumentasikan query secara eksplisit.
 > - Akses gratis: buka Google Scholar → cari judul paper → klik [PDF] jika tersedia, atau akses lewat campus VPN
 
-**Topik riset:** ________________________________________
-**Query pencarian:** ____________________________________
-**Database:** ___________________________________________
+**Topik riset:** Perbandingan Naive Bayes vs KNN untuk Klasifikasi Spam Email
+**Query pencarian:** ("spam email detection" AND "Naive Bayes" AND "KNN") OR ("email classification" machine learning)
+**Database:** Google Scholar, IEEE Xplore, MDPI
 
 | # | Study | Tahun | Method | Dataset | Result | Limitasi |
 |---|-------|-------|--------|---------|--------|----------|
-| 1 | *Contoh: Rahman et al.* | *2023* | *CNN* | *ImageNet subset* | *Acc 91%* | *Hanya 3 kelas* |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| 1 | Email Spam Detection using ML Techniques (IEEE) | 2021 | Naive Bayes, KNN, SVM | SpamAssassin | NB lebih stabil | Dataset kecil & lama |
+| 2 |Comparative Study of ML for Spam Email Detection |2020 |NB vs KNN vs DT |Enron Email Dataset |NB > KNN akuras |Bahasa Inggris saja |
+| 3 |Spam Detection using TF-IDF + ML |2022 |NB, KNN, Logistic Regression |Public email dataset |KNN lebih lambat |Feature sederhana |
+| 4 |Machine Learning for Spam Filtering (Review) |2023 |Review paper |Multi dataset |NB paling umum dipakai |Tidak eksperimen baru |
+| 5 |Email Classification using Supervised Learning |2021 |NB, KNN |Spam dataset Kaggle |NB unggul di precision |Tidak real-time test |
 
-**Pola yang terlihat — Metode dominan:** ___________________
-**Limitasi yang berulang:** ______________________________
+**Pola yang terlihat — Metode dominan:** Naive Bayes (paling sering dan stabil), KNN (sering sebagai pembanding)
+**Limitasi yang berulang:** dataset kecil, bahasa Inggris dominan, tidak real-time, fitur sederhana (TF-IDF)
 
 ---
 
@@ -146,14 +146,14 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [ ] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
-| Method Gap | [ ] Ya / [ ] Tidak | |
-| Data Gap | [ ] Ya / [ ] Tidak | |
-| Context Gap | [ ] Ya / [ ] Tidak | |
+| Performance Gap | [✓ ] Ya / [ ] Tidak | Akurasi algoritma klasik menurun pada dataset email modern dengan pola spam yang kompleks |
+| Method Gap | [✓ ] Ya / [ ] Tidak |Belum banyak penelitian yang mengombinasikan Naive Bayes dan KNN dengan teknik feature extraction modern |
+| Data Gap | [✓ ] Ya / [ ] Tidak |Banyak penelitian masih memakai dataset lama seperti Enron dan Spam Base |
+| Context Gap | [✓ ] Ya / [ ] Tidak |Belum banyak pengujian pada email berbahasa non-Inggris atau multi-domain |
 
-**Gap utama yang dipilih:** _____________________________
+**Gap utama yang dipilih:** Data Gap + Context Gap
 **Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
-> ___________________________________________________
+> Karena sistem spam email di dunia nyata tidak hanya bergantung pada akurasi dataset lama, tetapi harus mampu menangani spam modern yang terus berubah dan bersifat real-time. Oleh karena itu, hasil penelitian sebelumnya belum sepenuhnya representatif untuk kondisi nyata.
 
 ---
 
@@ -163,11 +163,11 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 
 | # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
 |---|----------|----------------|----------------------|-------------|--------|
-| 1 | *Contoh: RF + TF-IDF* | *Task sama: klasifikasi teks* | *Dipakai 6 dari 10 paper* | *Bukan, tapi common practice* | *Lee et al., 2022* |
-| 2 | | | | | |
+| 1 | Naive Bayes + TF-IDF | Standar klasik spam detection | Paling sering dipakai di 4/5 paper | Naive Bayes dan KNN dipilih sebagai baseline klasik yang umum digunakan dalam penelitian spam email classification, bukan sebagai state-of-the-art method | IEEE 2021 |
+| 2 |K-Nearest Neighbor (KNN) |Algoritma pembanding utama |Banyak dipakai untuk comparison study |Naive Bayes dan KNN dipilih sebagai baseline klasik yang umum digunakan dalam penelitian spam email classification, bukan sebagai state-of-the-art method |MDPI 2022 |
 
-**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ] Tidak
-> Justifikasi: ________________________________________
+**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ✓] Tidak
+> Justifikasi: Kedua baseline (Naive Bayes dan KNN) merupakan algoritma standar yang memang umum digunakan dalam penelitian spam email classification, sehingga perbandingan bersifat fair dan tidak bias.
 
 ---
 
@@ -176,5 +176,5 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 > Apa perbedaan antara "belum ada yang meneliti ini" (klaim tanpa bukti) dengan research gap yang valid? Bagaimana cara membuktikan bahwa sebuah gap benar-benar ada?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Perbedaan "belum ada yang meneliti ini" dengan research gap yang valid adalah bahwa research gap harus dibuktikan melalui literatur yang sudah ada, bukan asumsi. Gap yang valid muncul dari pola berulang di beberapa paper, seperti keterbatasan dataset, metode yang dominan, atau konteks yang belum diuji. Cara membuktikannya adalah dengan systematic literature review menggunakan database akademik dan mencatat konsistensi limitasi pada beberapa penelitian.
+> 

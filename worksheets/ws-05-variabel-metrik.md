@@ -85,17 +85,17 @@ Alignment Check:
 
 ## Latihan 1 — Operationalization Chain
 
-Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
+Apakah metode Naive Bayes menghasilkan F1-Score lebih tinggi dibandingkan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset?
 
 **RQ:** __________________________________________________
 
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
-| *Contoh: Jenis model* | *IV* | *Pendekatan klasifikasi* | *Categorical: CNN vs RF* | *Nominal* | *—* |
-| | DV | | | | |
-| | CV | | | | |
+| Jenis Algoritma | IV | Pendekatan klasifikasi | Naive Bayes vs KNN | Nominal | — |
+|Performa klasifikasi | DV |Kemampuan model mendeteksi spam |Accuracy, Precision, Recall, F1-Score |Ratio | %|
+| Dataset email| CV |Sumber data eksperimen |SpamAssassin Dataset |Nominal |— |
 
-**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [ ] Tidak
+**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [✓ ] Tidak
 > Jika ya, di mana? ____________________________________
 
 ---
@@ -106,15 +106,15 @@ Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Representative | *Contoh: 4 — F1-Score mewakili keseimbangan precision-recall* | |
-| Sensitive | | |
-| Feasible | | |
+| Representative | 5 |F1-Score mewakili keseimbangan precision dan recall pada klasifikasi spam |
+| Sensitive |4 |F1-Score cukup sensitif terhadap perubahan performa model terutama pada data tidak seimbang |
+| Feasible |5 |Metrik dapat dihitung langsung menggunakan confusion matrix pada Python/Scikit-Lear |
 
-**Apakah perlu secondary metric?** [ ] Ya / [ ] Tidak
-> Jika ya, apa dan mengapa? _____________________________
+**Apakah perlu secondary metric?** [✓ ] Ya / [ ] Tidak
+> Jika ya, apa dan mengapa? Secondary metric berupa execution time diperlukan untuk melihat efisiensi komputasi antara Naive Bayes dan KNN karena KNN biasanya lebih lambat pada dataset besar
 
 **Contoh kasus ceiling effect untuk metrik ini:**
-> ___________________________________________________
+> Jika kedua model memperoleh accuracy di atas 99%, maka accuracy menjadi kurang sensitif untuk membedakan performa model sehingga diperlukan F1-Score atau recall sebagai metrik tambahan.
 
 ---
 
@@ -124,10 +124,10 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 
 | Dimensi | Pertanyaan | Jawaban | Strategi Mitigasi |
 |---------|-----------|---------|------------------|
-| Completeness | *Apakah semua data point terkumpul?* | | |
-| Consistency | *Apakah ada kontradiksi internal?* | | |
-| Validity | *Apakah benar-benar mengukur yang dimaksud?* | | |
-| Representativeness | *Apakah sampel mewakili populasi target?* | | |
+| Completeness | Apakah semua data point terkumpul? |Kemungkinan ada email kosong atau corrupt |Membersihkan dataset dan menghapus data invalid |
+| Consistency | Apakah ada kontradiksi internal? |Format email mungkin berbeda-beda |Standarisasi preprocessing teks |
+| Validity | Apakah benar-benar mengukur yang dimaksud? |Dataset memang berisi label spam dan non-spam |Menggunakan dataset publik terpercaya |
+| Representativeness | Apakah sampel mewakili populasi target? |Dataset dominan email bahasa Inggris |Menambahkan dataset multi-bahasa jika memungkinkan |
 
 ---
 
@@ -136,5 +136,5 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 > Mengapa memilih metrik setelah melihat data dianggap p-hacking? Apa bedanya dengan eksplorasi data yang sah?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Memilih metrik setelah melihat data dianggap p-hacking karena peneliti bisa memilih metrik yang paling menguntungkan hasil eksperimen sehingga kesimpulan menjadi bias dan tidak objektif. Hal ini dapat menyebabkan hasil penelitian terlihat signifikan padahal sebenarnya tidak konsisten.
+> Berbeda dengan eksplorasi data yang sah, eksplorasi dilakukan untuk memahami karakteristik data dan biasanya dilaporkan sebagai exploratory analysis, bukan sebagai bukti utama untuk menerima atau menolak hipotesis.
