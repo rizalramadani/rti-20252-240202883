@@ -80,25 +80,41 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question: Apakah metode Naive Bayes menghasilkan performa klasifikasi email spam yang lebih baik dibandingkan K-Nearest Neighbor berdasarkan nilai Accuracy, Precision, Recall, dan F1-Score pada SpamAssassin Dataset?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+|Jenis Algoritma (Naive Bayes, KNN)| IV   |Modul Classifier|Mengubah parameter model_type menjadi Naive Bayes atau KNN|
+|Performa Klasifikasi| DV   |Modul Evaluasi (Metrics Collector)|Menghitung Accuracy, Precision, Recall, dan F1-Score|
+|Text Preprocessing| CV   |Preprocessing Module|Tokenization, stopword removal, dan TF-IDF diterapkan sama untuk semua metode|
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+  [✓] Traceability — Setiap komponen bisa ditelusuri ke variabel
+  [✓] Variable Isolation — IV bisa diubah tanpa mengubah CV
+  [✓] Measurement Integration — Pengukuran DV built-in
+  [✓] Reproducibility — Setup bisa direkonstruksi
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+  Input data     : SpamAssassin Public Corpus
+  Parameter      : dataset:
+  name: SpamAssassin
+
+preprocessing:
+  tfidf: true
+  stopword_removal: true
+
+experiment:
+  train_test_split: 0.8
+  random_seed: 42
+
+model:
+  type: naive_bayes
+  Output format  : | Algoritma   | Accuracy | Precision | Recall | F1-Score |
+| ----------- | -------- | --------- | ------ | -------- |
+| Naive Bayes | xx.xx%   | xx.xx%    | xx.xx% | xx.xx%   |
+| KNN         | xx.xx%   | xx.xx%    | xx.xx% | xx.xx%   |
+
 ```
 
 ---

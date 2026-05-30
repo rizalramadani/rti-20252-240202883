@@ -70,9 +70,9 @@ Research Question: ____________________
 
 | Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
 |----------|------|--------|--------|-------|--------|---------------|-------------|
-|          | IV   |        |        |       |        |               |             |
-|          | DV   |        |        |       |        |               |             |
-|          | CV   |        |        |       |        |               |             |
+|Jenis Algoritma (Naive Bayes, KNN)| IV   |Pendekatan klasifikasi email spam|Kategori algoritma yang digunakan|Nominal|-|Mengubah parameter model pada sistem eksperimen|Variabel utama yang dibandingkan dalam penelitian|
+|Performa Klasifikasi| DV   |Kemampuan model mendeteksi email spam|Recall|Ratio|%|Recall = TP/(TP+FN)|Mengukur kemampuan menemukan seluruh spam|
+|Dataset SpamAssassin| CV   |Sumber data eksperimen|Dataset tetap|Nominal|-|Menggunakan dataset yang sama pada seluruh eksperimen|Menjaga konsistensi pengujian|
 
 Alignment Check:
   RQ → Concept → Variable → Metric → Data → Result

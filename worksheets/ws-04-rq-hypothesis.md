@@ -67,34 +67,34 @@ Jika rantai ini tidak lengkap, RQ belum mature. Bi-directional: RQ yang tidak bi
 ```
 RQ-CONTRIBUTION-HYPOTHESIS
 
-Gap Statement  : ____________________
+Gap Statement  : Apakah metode Naive Bayes menghasilkan performa klasifikasi email spam yang lebih baik dibandingkan K-Nearest Neighbor berdasarkan nilai Accuracy, Precision, Recall, dan F1-Score pada SpamAssassin Dataset?
 
 Research Question:
-  Tipe         : [ ] Comparison  [ ] Improvement  [ ] Exploratory
-  Formulasi    : ____________________
-  Variabel IV  : ____________________
-  Variabel DV  : ____________________
-  Metrik       : ____________________
-  Dataset      : ____________________
-  Baseline     : ____________________
+  Tipe         : [✓] Comparison  [ ] Improvement  [ ] Exploratory
+  Formulasi    : Apakah metode Naive Bayes menghasilkan performa klasifikasi email spam yang lebih baik dibandingkan K-Nearest Neighbor berdasarkan nilai Accuracy, Precision, Recall, dan F1-Score pada SpamAssassin Dataset?
+  Variabel IV  : Jenis algoritma klasifikasi (Naive Bayes dan K-Nearest Neighbor)
+  Variabel DV  : Performa klasifikasi email spam
+  Metrik       : Accuracy, Precision, Recall, dan F1-Score
+  Dataset      : SpamAssassin Public Corpus
+  Baseline     : K-Nearest Neighbor (KNN)
 
 Quality Check RQ:
-  [ ] Variabel spesifik
-  [ ] Metrik jelas
-  [ ] Baseline ada
-  [ ] Konteks disebutkan
-  [ ] Memerlukan eksperimen (bukan hanya survei literatur)
+  [✓] Variabel spesifik
+  [✓] Metrik jelas
+  [✓] Baseline ada
+  [✓] Konteks disebutkan
+  [✓] Memerlukan eksperimen (bukan hanya survei literatur)
 
 Contribution Statement:
-  Apa yang baru diketahui : ____________________
-  Jenis kontribusi        : [ ] Improvement  [ ] Comparison  [ ] Novel approach
-  Gap yang diisi          : ____________________
+  Apa yang baru diketahui : Memberikan bukti empiris mengenai perbandingan performa Naive Bayes dan K-Nearest Neighbor dalam klasifikasi email spam menggunakan dataset yang sama dan kondisi eksperimen yang identik.
+  Jenis kontribusi        : [ ] Improvement  [✓] Comparison  [ ] Novel approach
+  Gap yang diisi          : Method Gap dan Performance Gap
 
 Hypothesis Pair:
-  H₀ : ____________________
-  H₁ : ____________________
-  Threshold              : ____________________
-  Justifikasi threshold  : ____________________
+  H₀ : Tidak terdapat perbedaan performa yang signifikan antara Naive Bayes dan K-Nearest Neighbor berdasarkan nilai F1-Score pada SpamAssassin Dataset
+  H₁ : Terdapat perbedaan performa yang signifikan antara Naive Bayes dan K-Nearest Neighbor berdasarkan nilai F1-Score pada SpamAssassin Dataset.
+  Threshold              : α = 0,05
+  Justifikasi threshold  : Nilai signifikansi 0,05 merupakan standar yang umum digunakan dalam penelitian machine learning dan data mining untuk menentukan apakah perbedaan performa yang diperoleh signifikan secara statistik.
 ```
 
 ---

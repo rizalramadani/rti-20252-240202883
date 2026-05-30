@@ -68,36 +68,37 @@ Ancaman validitas harus diidentifikasi **sebelum** eksperimen dan mitigasinya di
 ```
 EXPERIMENT DESIGN
 
-Research Question : ____________________
-Hypothesis        : ____________________
-Tipe Eksperimen   : [ ] Comparison  [ ] Ablation  [ ] Parameter
+Research Question : Apakah metode Naive Bayes menghasilkan performa klasifikasi email spam yang lebih baik dibandingkan K-Nearest Neighbor berdasarkan nilai Accuracy, Precision, Recall, dan F1-Score pada SpamAssassin Dataset?
+Hypothesis        : H₀: Tidak terdapat perbedaan performa yang signifikan antara Naive Bayes dan K-Nearest Neighbor pada klasifikasi email spam berdasarkan nilai F1-Score.
+H₁: Terdapat perbedaan performa yang signifikan antara Naive Bayes dan K-Nearest Neighbor pada klasifikasi email spam berdasarkan nilai F1-Score.
+Tipe Eksperimen   : [✓] Comparison  [ ] Ablation  [ ] Parameter
 
 Kondisi Eksperimen:
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control |           |          |             |
-| Treatment |         |          |             |
+| Control |Metode baseline menggunakan K-Nearest Neighbor|KNN|SpamAssassin Dataset, TF-IDF, stopword removal, split 80:20, seed 42|
+| Treatment |Metode yang diuji menggunakan Naive Bayes|Naive Bayes|SpamAssassin Dataset, TF-IDF, stopword removal, split 80:20, seed 42|
 
 Fairness Checklist:
-  [ ] Dataset identik untuk semua kondisi
-  [ ] Preprocessing setara
-  [ ] Tuning effort setara
-  [ ] Environment identik
-  [ ] Metrik evaluasi sama
+  [✓] Dataset identik untuk semua kondisi
+  [✓] Preprocessing setara
+  [✓] Tuning effort setara
+  [✓] Environment identik
+  [✓] Metrik evaluasi sama
 
 Threat Analysis:
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal    |                 |          |
-| External    |                 |          |
-| Construct   |                 |          |
-| Conclusion  |                 |          |
+| Internal    |Data leakage antara data training dan testing|Menggunakan train-test split yang benar dan memastikan tidak ada data yang tumpang tindih|
+| External    |Dataset hanya berisi email berbahasa Inggris|Menjelaskan keterbatasan penelitian dan menyarankan pengujian pada dataset lain|
+| Construct   |Accuracy saja tidak cukup menggambarkan performa spam classification|Menggunakan Precision, Recall, dan F1-Score sebagai metrik tambahan|
+| Conclusion  |Ukuran sampel atau jumlah eksperimen kurang memadai|Menggunakan cross-validation dan beberapa kali pengujian|
 
 Statistical Plan:
-  Uji statistik   : ____________________
-  Justifikasi      : ____________________
-  Alpha            : ____________________
-  Effect size min  : ____________________
+  Uji statistik   : Independent Sample t-Test
+  Justifikasi      : Digunakan untuk menguji apakah terdapat perbedaan rata-rata performa (F1-Score) yang signifikan antara Naive Bayes dan KNN.
+  Alpha            : 0,05
+  Effect size min  : Cohen's d ≥ 0,5 (medium effect)
 ```
 
 ---
@@ -107,7 +108,7 @@ Statistical Plan:
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
 **RQ:** Apakah metode Naive Bayes menghasilkan F1-Score lebih tinggi dibandingkan K-Nearest Neighbor pada klasifikasi email spam menggunakan SpamAssassin Dataset?
-**Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [ ] Parameter
+**Tipe eksperimen:** [✓] Comparison / [ ] Ablation / [ ] Parameter
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|

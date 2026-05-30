@@ -77,39 +77,48 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ```
 LITERATURE MAPPING
 
-Topik      : ____________________
-Database   : ____________________
-Query      : ____________________
-Tahun      : ____________________
-Hasil awal : ____ paper → Screening → ____ paper final
+Topik      : Perbandingan Naive Bayes dan K-Nearest Neighbor untuk Klasifikasi Email Spam
+Database   : Google Scholar, IEEE Xplore, ResearchGate
+Query      : ("email spam classification" OR "spam detection")
+AND ("Naive Bayes" OR "K-Nearest Neighbor" OR "KNN")
+AND ("machine learning")
+Tahun      : 2020–2024
+Hasil awal : 35 paper → Screening → 5 paper final
 
 Literature Matrix (concept-centric):
 
 | Study | Tahun | Method | Data | Result | Limitation |
-|-------|-------|--------|------|--------|------------|
-|       |       |        |      |        |            |
+|Sharma et al.|2021|Naive Bayes vs KNN|Enron Email Dataset|NB 94%, KNN 91%|Hanya email bahasa Inggris|
+|Singh & Kumar|2022|SVM, NB, KNN|SpamAssassin|SVM 96%, NB 93%|Tidak diuji real-time|
+|Lee et al.|2023|Random Forest, KNN|Ling-Spam Dataset|RF lebih baik dari KNN|Dataset relatif kecil|
+|Ahmed et al.|2024|CNN, LSTM|Multi-language Email Dataset|Accuracy 98%|Komputasi tinggi|
+|Zhang et al|2020|NB, DT, KNN|UCI Spam Base|NB paling cepat|Kurang efektif pada data tidak seimbang|
 
 Pola yang ditemukan:
-  Metode dominan     : ____________________
-  Dataset umum       : ____________________
-  Limitasi berulang  : ____________________
+  Metode dominan     : Naive Bayes, KNN, SVM, Random Forest, dan Deep Learning (CNN/LSTM).
+  Dataset umum       : SpamAssassin, Enron Email Dataset, Ling-Spam Dataset, UCI Spam Base.
+  Limitasi berulang  : Dataset mayoritas berbahasa Inggris.
+Belum banyak evaluasi multi-bahasa.
+KNN memiliki waktu komputasi lebih tinggi.
+Sebagian penelitian hanya fokus pada akurasi.
 
 GAP IDENTIFICATION
 
-Gap 1: [Jenis: performance / method / data / context]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 1: [Jenis: Data]
+  Deskripsi    : Sebagian besar penelitian menggunakan dataset email berbahasa Inggris sehingga belum mewakili kondisi email global atau lokal Indonesia.
+  Bukti        : 4 dari 5 paper menggunakan Enron, SpamAssassin, atau UCI Spam Base yang seluruhnya berbahasa Inggris.
+  Signifikansi : Model yang dilatih pada satu bahasa belum tentu memiliki performa yang sama pada bahasa lain.
 
-Gap 2: [Jenis: ____]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 2: [Jenis: Method Gap]
+  Deskripsi    : Penelitian terbaru banyak membandingkan metode klasik dengan deep learning, tetapi perbandingan khusus antara Naive Bayes dan KNN pada dataset modern masih terbatas.
+  Bukti        : Sebagian besar studi tahun 2023–2024 berfokus pada CNN, LSTM, atau Random Forest.
+  Signifikansi : Perlu diketahui apakah metode sederhana seperti Naive Bayes masih kompetitif dibanding metode lain dengan biaya komputasi lebih rendah.
 
 Baseline Selection:
 | Baseline | Relevansi | Representatif | Source |
 |----------|-----------|---------------|--------|
-|          |           |               |        |
+|Naive Bayes|Digunakan langsung untuk klasifikasi spam email|Salah satu algoritma paling umum dalam text classification|Sharma et al. (2021)|
+|K-Nearest Neighbor|Digunakan untuk task yang sama|Sering digunakan sebagai metode pembanding|Sharma et al. (2021)|
 ```
 
 ---
