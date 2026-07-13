@@ -65,25 +65,31 @@ Keduanya **saling melengkapi**:
 ```
 RESULT PRESENTATION PLAN
 
-Research Question : ____________________
-Metrik Utama      : ____________________
+Research Question : Apakah metode Naive Bayes menghasilkan performa klasifikasi email spam yang lebih baik dibandingkan K-Nearest Neighbor berdasarkan nilai Accuracy, Precision, Recall, dan F1-Score pada SpamAssassin Dataset?
+
+Metrik Utama      : F1-Score
 
 Tabel Hasil:
-| Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
-|----------|----------------------|----------------------|---|
-|          |                      |                      |   |
+
+| Skenario | Accuracy (mean ± std) | F1-Score (mean ± std) | n |
+|----------|----------------------|-----------------------|---|
+| Naive Bayes | 96.4 ± 0.3% | 96.1 ± 0.4% | 5 |
+| K-Nearest Neighbor | 94.9 ± 0.5% | 94.5 ± 0.6% | 5 |
 
 Visualisasi yang Direncanakan:
+
 | # | Jenis Grafik | Pesan Utama | Metrik |
 |---|-------------|-------------|--------|
-| 1 |             |             |        |
-| 2 |             |             |        |
+| 1 | Bar Chart + Error Bar | Membandingkan performa Naive Bayes dan KNN | Accuracy dan F1-Score |
+| 2 | Box Plot | Menunjukkan distribusi hasil tiap algoritma | F1-Score |
+| 3 | Scatter Plot | Membandingkan Accuracy dengan waktu komputasi | Accuracy dan Execution Time |
 
 Bias Check:
-  [ ] Y-axis mulai dari 0 (atau dijustifikasi)
-  [ ] Error bar/CI ditampilkan
-  [ ] Semua data disertakan (tidak cherry-picked)
-  [ ] Tidak menggunakan 3D tanpa alasan
+
+[✓] Y-axis mulai dari 0
+[✓] Error bar ditampilkan
+[✓] Semua data disertakan (tidak cherry-picked)
+[✓] Tidak menggunakan grafik 3D
 ```
 
 ---
@@ -94,15 +100,14 @@ Buat tabel hasil eksperimen Anda (boleh dengan data simulasi jika belum punya da
 
 | Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
 |----------|----------------------|----------------------|---|
-| *Contoh: BERT-base* | *88.4 ± 1.2%* | *45.2 ± 3.1 min* | *10* |
-| | | | |
-| | | | |
+| Naive Bayes | 96.4 ± 0.3% | 96.1 ± 0.4% | 5 |
+|K-Nearest Neighbor|94.9 ± 0.5%|94.5 ± 0.6%|5|
 
 **Checklist tabel:**
-- [ ] Self-contained (judul jelas, satuan ada, N tercantum)
-- [ ] Mean ± std (bukan single number)
-- [ ] Diurutkan berdasarkan metrik utama
-- [ ] Format konsisten di semua baris
+- [☑] Self-contained (judul jelas, satuan ada, N tercantum)
+- [☑] Mean ± std (bukan single number)
+- [☑] Diurutkan berdasarkan metrik utama
+- [☑] Format konsisten di semua baris
 
 ---
 
@@ -112,9 +117,9 @@ Rencanakan 2-3 grafik untuk menyajikan data dari Latihan 1. Setiap grafik = satu
 
 | # | Jenis Grafik | Pesan | Data yang Digunakan |
 |---|-------------|-------|---------------------|
-| 1 | *Contoh: Bar chart + error bar* | *Perbandingan accuracy antar 3 model* | *Mean accuracy ± std* |
-| 2 | *Box plot* | *Distribusi F1 per model* | *Semua run F1* |
-| 3 | *Scatter plot* | *Trade-off accuracy vs training time* | *Mean accuracy vs mean time* |
+| 1 | Bar Chart + Error Ba | Membandingkan nilai Accuracy dan F1-Score antara Naive Bayes dan KNN | Mean Accuracy dan Mean F1-Score ± Standar Devias |
+| 2 | Box Plot | Menampilkan distribusi F1-Score dari lima kali percobaan setiap algoritma | Seluruh nilai F1-Score dari setiap run |
+| 3 | Scatter Plot | Menunjukkan hubungan antara Accuracy dan waktu komputasi masing-masing algoritma | Mean Accuracy dan Mean Execution Time |
 
 ---
 
@@ -126,14 +131,14 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah Y-axis menyesatkan? | *Contoh: Ya — A terlihat 2× B padahal beda 0.4%* |
-| Apakah error bar ditampilkan? | |
-| Apakah semua kondisi ditampilkan? | |
-| Apa solusinya? | |
+| Apakah Y-axis menyesatkan? | Ya. Perbedaan 0,4% terlihat jauh lebih besar daripada kondisi sebenarnya karena sumbu Y tidak dimulai dari nol. |
+| Apakah error bar ditampilkan? |Tidak. Grafik sebaiknya menampilkan error bar agar variasi hasil antar-run dapat diketahui.|
+| Apakah semua kondisi ditampilkan? |Ya. Kedua metode ditampilkan sehingga tidak terjadi cherry-picking.|
+| Apa solusinya? |Gunakan sumbu Y yang dimulai dari 0 atau berikan alasan jika menggunakan rentang tertentu, serta tambahkan error bar pada setiap batang grafik.|
 
 **Evaluasi grafik Anda sendiri dari Latihan 2:**
-- [ ] Semua bias check lulus
-- [ ] Ada yang perlu diperbaiki: ____
+- [☑] Semua bias check lulus
+- [-] Ada yang perlu diperbaiki: ____
 
 ---
 
@@ -141,5 +146,5 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 > Mengapa tabel dan grafik keduanya diperlukan — tidak cukup salah satu saja? Pernahkah Anda membuat grafik yang (tanpa sengaja) menyesatkan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Tabel dan grafik memiliki fungsi yang saling melengkapi dalam penyajian hasil penelitian. Tabel digunakan untuk menampilkan nilai secara rinci dan presisi sehingga pembaca dapat mengetahui hasil setiap metrik dengan tepat. Sebaliknya, grafik memudahkan pembaca melihat pola, tren, serta perbedaan antaralgoritma secara visual. Oleh karena itu, penggunaan keduanya akan membuat hasil penelitian lebih mudah dipahami dan dianalisis.
+> Dalam penyusunan tugas sebelumnya, pernah dibuat grafik batang dengan rentang sumbu Y yang terlalu sempit sehingga selisih performa antaralgoritma terlihat lebih besar dari kondisi sebenarnya. Setelah memahami prinsip visualisasi ilmiah, grafik harus dibuat dengan skala yang tepat, menampilkan seluruh data, serta dilengkapi error bar agar penyajian hasil menjadi lebih objektif, jujur, dan tidak menyesatkan.

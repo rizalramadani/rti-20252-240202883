@@ -66,30 +66,30 @@ Jika gagal di langkah awal → tidak perlu lanjut.
 DATA VALIDATION CHECKLIST
 
 Completeness:
-  [ ] Semua skenario tercakup
-  [ ] Jumlah run sesuai rencana
-  [ ] Tidak ada file output hilang
-  Missing: ____ dari ____ data points
+  [✓] Semua skenario tercakup
+  [✓] Jumlah run sesuai rencana
+  [✓] Tidak ada file output hilang
+  Missing: 0 dari 10 data points
 
 Format Consistency:
-  [ ] Semua file format sama (CSV/JSON/...)
-  [ ] Header konsisten
-  [ ] Tipe data konsisten (numerik tetap numerik)
+  [✓] Semua file format sama (CSV/JSON/...)
+  [✓] Header konsisten
+  [✓] Tipe data konsisten (numerik tetap numerik)
 
 Range & Logic:
-  [ ] Nilai dalam range masuk akal
-  [ ] Tidak ada waktu negatif
-  [ ] Metrik 0–100%, tidak di luar range
-  Anomali ditemukan: ____________________
+  [✓] Nilai dalam range masuk akal
+  [✓] Tidak ada waktu negatif
+  [✓] Metrik 0–100%, tidak di luar range
+  Anomali ditemukan: Tidak ada anomali yang memerlukan re-run
 
 Cross-Validation:
-  [ ] Run identik → hasil mendekati
-  [ ] Trend konsisten dengan ekspektasi teori
+  [✓] Run identik → hasil mendekati
+  [✓] Trend konsisten dengan ekspektasi teori
 
 Keputusan:
-  [ ] Data siap analisis
+  [✓] Data siap analisis
   [ ] Perlu cleaning
-  [ ] Perlu re-run (skenario: ____)
+  [ ] Perlu re-run (skenario: -)
 ```
 
 ---
@@ -100,15 +100,13 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 | Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
 |----------|-----------------|-------------|---------|--------|
-| *Contoh: BERT, DS-1* | *10* | *10* | *0* | *—* |
-| *LSTM, DS-3* | *10* | *8* | *2* | *OOM pada run 7 & 9* |
-| | | | | |
-| | | | | |
+| Naive Bayes – SpamAssassin | 5 | 5 | 0 | - |
+| K-Nearest Neighbor – SpamAssassin | 5 | 5 | 0 | - |
 
-**Total expected:** ____ | **Total actual:** ____ | **Missing:** ____
+**Total expected:** 10 | **Total actual:** 10 | **Missing:**0
 
 **Keputusan untuk data missing:**
-> ___________________________________________________
+> Seluruh data berhasil dikumpulkan sesuai execution plan pada WS-10 sehingga tidak diperlukan pengumpulan data tambahan maupun pengulangan eksperimen.
 
 ---
 
@@ -120,23 +118,23 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 | Run | Accuracy (%) |
 |-----|-------------|
-| 1 | *91.2* |
-| 2 | *90.8* |
-| 3 | *91.5* |
-| 4 | *78.3* |
-| 5 | *91.0* |
+| 1 | 96.4 |
+| 2 | 96.2 |
+| 3 | 96.5 |
+| 4 | 95.9 |
+| 5 | 96.3 |
 
 **Deteksi outlier:**
-- Q1 = ____ | Q3 = ____ | IQR = ____
-- Batas bawah (Q1 - 1.5×IQR) = ____
-- Batas atas (Q3 + 1.5×IQR) = ____
-- Outlier terdeteksi: ____
+- Q1 = 96.2 | Q3 = 96.4 | IQR = 0.2
+- Batas bawah (Q1 - 1.5×IQR) = 95.9
+- Batas atas (Q3 + 1.5×IQR) = 96.7
+- Outlier terdeteksi:Tidak ada
 
 **Investigasi (untuk setiap outlier):**
 
 | Outlier | Nilai | Kemungkinan Penyebab | Keputusan |
 |---------|-------|---------------------|-----------|
-| *Run 4* | *78.3* | *Contoh: thermal throttling setelah 3 run berturut* | *Re-run dengan cooling interval* |
+| Tidak ada | —* | Seluruh nilai masih berada dalam batas IQR |Data dipertahankan dan digunakan untuk analisis |
 
 ---
 
@@ -144,12 +142,12 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
-**1. Completeness:** ____% data terkumpul
-**2. Format:** [ ] Konsisten / [ ] Ada inkonsistensi: ____
-**3. Range check (anomali):** ____
-**4. Logic check:** [ ] Parameter sesuai plan / [ ] Ada ketidaksesuaian: ____
+**1. Completeness:** 100% data terkumpul
+**2. Format:** [☑] Konsisten / [ ] Ada inkonsistensi: 
+**3. Range check (anomali):** Seluruh nilai Accuracy, Precision, Recall, dan F1-Score berada pada rentang 0–100% sehingga tidak ditemukan nilai yang berada di luar batas logis.
+**4. Logic check:** [☑] Parameter sesuai plan / [ ] Ada ketidaksesuaian: ____
 
-**Kesimpulan:** [ ] Data siap analisis / [ ] Perlu tindakan: ____
+**Kesimpulan:** [☑] Data siap analisis / [ ] Perlu tindakan: ____
 
 ---
 
@@ -157,5 +155,5 @@ Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
 > Apa perbedaan antara "data yang benar" dan "data yang dipercaya"? Mengapa proses validasi formal diperlukan meskipun data dikumpulkan secara otomatis?
 
-> ___________________________________________________
-> ___________________________________________________
+> Data yang benar adalah data yang berhasil diperoleh dari proses eksperimen, sedangkan data yang dipercaya adalah data yang telah melalui proses validasi sehingga terbukti lengkap, konsisten, dan sesuai dengan desain penelitian. Data yang benar belum tentu dapat dipercaya apabila masih terdapat kesalahan pencatatan, data yang hilang, atau inkonsistensi format.
+> Proses validasi formal tetap diperlukan meskipun data dikumpulkan secara otomatis karena sistem pencatatan juga dapat mengalami kesalahan, seperti bug pada logger, file yang tidak lengkap, atau konfigurasi eksperimen yang tidak sesuai. Dengan melakukan validasi terhadap kelengkapan data, format, rentang nilai, dan kesesuaian dengan desain eksperimen, hasil penelitian menjadi lebih andal, mudah direproduksi, dan dapat dipertanggungjawabkan secara ilmiah.

@@ -73,32 +73,35 @@ Mengandalkan "install library terbaru" berbahaya: versi berbeda = perilaku berbe
 EXPERIMENT SETUP DOCUMENTATION
 
 Hardware:
-  CPU     : ____________________
-  RAM     : ____________________
-  GPU     : ____________________
-  Storage : ____________________
+  CPU     : Intel Core i5-1135G7 (4 Core, 8 Thread)
+  RAM     : 8 GB DDR4
+  GPU     : Intel Iris Xe Graphics (CPU-only)
+  Storage : SSD 512 GB
 
 Software:
-  OS        : ____________________
-  Runtime   : ____________________
-  Framework : ____________________
+  OS        : Windows 11 Pro 64-bit
+  Runtime   : Python 3.11
+  Framework : Scikit-learn 1.3.2
 
 Dependencies:
 | Library | Version | Sumber | Hash/Checksum |
-|---------|---------|--------|---------------|
-|         |         |        |               |
-|         |         |        |               |
+|scikit-learn|1.3.2|PyPI|requirements.txt|
+|pandas|2.2.2|PyPI|requirements.txt|
+|numpy|1.26.4|PyPI|requirements.txt|
 
 Konfigurasi:
-  Config file     : ____________________
-  Random seed     : ____________________
-  Hyperparameters : ____________________
+  Config file     : config.json
+  Random seed     : 42
+  Hyperparameters : rain-test split = 80:20
+TF-IDF Vectorizer
+KNN (k = 5)
+Naive Bayes (MultinomialNB)
 
 Reproducibility Check:
-  [ ] Dependency terdokumentasi (requirements.txt / lock file)
-  [ ] Seed ditetapkan di semua level (Python, NumPy, framework)
-  [ ] Config di version control
-  [ ] README instruksi reproduksi lengkap
+  [☑] Dependency terdokumentasi (requirements.txt / lock file)
+  [☑] Seed ditetapkan di semua level (Python, NumPy, framework)
+  [☑] Config di version control
+  [☑] README instruksi reproduksi lengkap
 ```
 
 ---
@@ -109,23 +112,23 @@ Dokumentasikan environment untuk eksperimen Anda (boleh environment saat ini ata
 
 | Komponen | Spesifikasi |
 |----------|------------|
-| CPU | *Contoh: Intel Core i7-12700H, 14 Core* |
-| RAM | *Contoh: 32 GB DDR5* |
-| GPU | *Contoh: NVIDIA RTX 3060 6GB / CPU-only jika tidak ada GPU* |
-| OS | *Contoh: Ubuntu 22.04 LTS / Windows 11* |
-| Runtime | |
-| Framework | |
-| Random Seed | |
+| CPU | Intel Core i5-1135G7 (4 Core, 8 Thread) |
+| RAM | 8 GB DDR4 |
+| GPU | Intel Iris Xe Graphics (CPU-only) |
+| OS | Windows 11 Pro 64-bit |
+| Runtime |Python 3.11|
+| Framework |Scikit-learn 1.3.2|
+| Random Seed |42|
 
 **Dependencies (minimal 5):**
 
 | Library | Version | Alasan Dibutuhkan |
-|---------|---------|-------------------|
-| *Contoh: scikit-learn* | *1.3.2* | *Klasifikasi + evaluasi metrik* |
-| | | |
-| | | |
-| | | |
-| | | |
+|scikit-learn|1.3.2|Implementasi algoritma Naive Bayes, KNN, serta evaluasi model|
+| pandas | 2.2.2 | Membaca dan mengelola dataset SpamAssassin |
+|numpy|1.26.4|Operasi numerik dan manipulasi array|
+|matplotlib|3.9.0|Visualisasi hasil eksperimen|
+|seaborn|0.13.2|Menampilkan confusion matrix dan grafik evaluasi|
+
 
 ---
 
@@ -135,25 +138,25 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 
 | Run | Seed | Metrik Utama | Hasil Sama? |
 |-----|------|-------------|-------------|
-| 1 | *Contoh: 42* | *Contoh: Accuracy* | — |
-| 2 | | | [ ] Ya / [ ] Tidak |
-| 3 | | | [ ] Ya / [ ] Tidak |
+| 1 | 42 | F1-Score = 97,1% | — |
+| 2 |42|F1-Score = 97,1%| [☑] Ya / [ ] Tidak |
+| 3 |42|F1-Score = 97,1%| [☑] Ya / [ ] Tidak |
 
 **Jika hasil berbeda, kemungkinan penyebab:**
 
 > Penyebab umum non-repeatability:
-> - **Thermal throttling** — CPU/GPU overheating pada run berturut-turut → clock speed turun → waktu eksekusi berubah
-> - **Background process** — antivirus scan, update OS, atau cloud sync aktif saat run berlangsung
-> - **Cache dari run sebelumnya** — hasil tersimpan di memori/disk sehingga run berikutnya tidak menjalankan komputasi penuh
-> - **Random state tidak dikontrol di semua level** — Python seed di-set, tapi NumPy/PyTorch/TensorFlow punya seed independen
+> - Random seed belum diterapkan pada seluruh library. — CPU/GPU overheating pada run berturut-turut → clock speed turun → waktu eksekusi berubah
+> - Dataset berubah akibat preprocessing yang tidak konsisten. — antivirus scan, update OS, atau cloud sync aktif saat run berlangsung
+> - Terdapat proses lain yang menggunakan resource komputer. — hasil tersimpan di memori/disk sehingga run berikutnya tidak menjalankan komputasi penuh
+> - Cache hasil eksperimen belum dibersihkan. — Python seed di-set, tapi NumPy/PyTorch/TensorFlow punya seed independen
 
 ___________________________________________________
 
 **Checklist kontrol yang sudah diterapkan:**
-- [ ] Random seed di-set di semua level
-- [ ] Tidak ada background process yang mengganggu
-- [ ] Cache dibersihkan antar-run
-- [ ] Config file yang sama untuk semua run
+- [☑] Random seed di-set di semua level
+- [☑] Tidak ada background process yang mengganggu
+- [☑] Cache dibersihkan antar-run
+- [☑] Config file yang sama untuk semua run
 
 ---
 
@@ -162,33 +165,56 @@ ___________________________________________________
 Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
 
 ```
-# Judul Eksperimen: ____________________
+# Judul Eksperimen: Perbandingan Algoritma Naive Bayes dan K-Nearest Neighbor (KNN)
+untuk Klasifikasi Spam Email Menggunakan SpamAssassin Dataset
 
 ## 1. Environment
-> (Salin spesifikasi dari Latihan 1)
+> CPU          : Intel Core i5-1135G7
+RAM          : 8 GB DDR4
+GPU          : Intel Iris Xe Graphics
+OS           : Windows 11 Pro
+Python       : 3.11
+Framework    : Scikit-learn 1.3.2
+Random Seed  : 42
 
 ## 2. Installation
-> (Langkah instalasi, misal: "pip install -r requirements.txt")
+> pip install -r requirements.txt
 
 ## 3. Data
-> (Deskripsi data: sumber, format, ukuran)
+> Dataset menggunakan SpamAssassin Public Corpus dalam format CSV.
+Seluruh data diproses menggunakan preprocessing yang sama berupa
+tokenization, stopword removal, dan TF-IDF.
 
 ## 4. Execution
-> (Command untuk menjalankan eksperimen)
+> python main.py
 
 ## 5. Configuration
-> (File config yang digunakan + parameter kunci)
+> Config file : config.json
+
+- random_seed = 42
+- train_test_split = 0.8
+- classifier = naive_bayes / knn
+- k = 5
 
 ## 6. Expected Output
-> (Contoh output yang diharapkan + format)
+> Output yang dihasilkan berupa:
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
 ```
 
 ---
 
 ## Refleksi
 
-> Apakah eksperimen Anda saat ini bisa direproduksi oleh orang lain tanpa bantuan Anda? Komponen apa yang masih hilang?
+> Apakah eksperimen Anda saat ini bisa direproduksi oleh orang lain tanpa bantuan Anda? Komponen apa yang masih hilang? Ya. Eksperimen telah dilengkapi dengan spesifikasi hardware dan software, versi library, parameter eksperimen, random seed, serta langkah instalasi dan eksekusi. Dengan menggunakan dataset yang sama, konfigurasi yang identik, dan dependency yang telah dikunci melalui requirements.txt, peneliti lain dapat menjalankan eksperimen dan memperoleh hasil yang sama atau sangat mendekati.
 
-**Level saat ini:** [ ] Repeatability / [ ] Reproducibility / [ ] Belum keduanya
+**Level saat ini:** [☑] Repeatability / [☑] Reproducibility / [ ] Belum keduanya
 **Komponen yang belum terdokumentasi:**
-> ___________________________________________________
+> Repository GitHub proyek.
+>File requirements.txt dan config.json sebagai lampiran.
+>Struktur folder proyek.
+>Dokumentasi preprocessing secara lebih rinci.
+>Dokumentasi hasil pengujian untuk setiap percobaan.

@@ -84,28 +84,37 @@ Metrik-X     ✗      ✗       ✓ ←     ✗        ✗
 ```
 PAPER STRUCTURE CHECKLIST
 
-Title   : ____________________
-Target  : [ ] Jurnal  [ ] Konferensi  [ ] Laporan
+Title :
+Perbandingan Algoritma Naive Bayes dan K-Nearest Neighbor (KNN)
+untuk Klasifikasi Email Spam Menggunakan SpamAssassin Dataset
+
+Target :
+[✓] Jurnal
+[ ] Konferensi
+[ ] Laporan
 
 Section Check:
-  [ ] Abstract — masalah, metode, hasil utama, kontribusi (max 250 kata)
-  [ ] Introduction — konteks → gap → RQ → kontribusi → struktur paper
-  [ ] Related Work — concept-centric, gap positioning
-  [ ] Method — reproducible: desain, variabel, metrik, setup, prosedur
-  [ ] Results — tabel + grafik + observasi (tanpa interpretasi)
-  [ ] Discussion — interpretasi, perbandingan, implikasi, limitation
-  [ ] Conclusion — jawaban RQ, kontribusi, future work
+
+[✓] Abstract — masalah, metode, hasil utama, kontribusi
+[✓] Introduction — konteks → gap → research question → kontribusi → struktur paper
+[✓] Related Work — concept-centric dan gap penelitian
+[✓] Method — desain penelitian, variabel, metrik, setup eksperimen, prosedur
+[✓] Results — tabel, grafik, dan hasil eksperimen tanpa interpretasi
+[✓] Discussion — interpretasi, perbandingan dengan penelitian sebelumnya, implikasi, limitation
+[✓] Conclusion — jawaban research question, kontribusi, dan saran penelitian selanjutnya
 
 Consistency Matrix:
-  [ ] RQ di Introduction = RQ di Method = RQ di Conclusion
-  [ ] Variabel di Method = variabel di Results
-  [ ] Klaim di Discussion didukung data di Results
-  [ ] Limitasi di Discussion di-address di Conclusion/Future Work
+
+[✓] Research Question pada Introduction sama dengan Method dan Conclusion
+[✓] Variabel pada Method sama dengan Results
+[✓] Klaim pada Discussion didukung oleh data Results
+[✓] Limitasi pada Discussion dibahas kembali pada Future Work
 
 Writing Quality:
-  [ ] Clarity — mudah dipahami tanpa re-read
-  [ ] Precision — tidak ada istilah ambigu
-  [ ] Conciseness — tidak ada kalimat redundan
+
+[✓] Clarity
+[✓] Precision
+[✓] Conciseness
 ```
 
 ---
@@ -116,13 +125,13 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 | Section | Konten Utama (2-3 kalimat) | Target Kata |
 |---------|---------------------------|------------|
-| Abstract | *Contoh: Sistem rekomendasi memiliki akurasi tinggi tapi satisfaction rendah. Studi ini menguji CF+context signal. Hasil: satisfaction naik 38% tanpa penurunan RMSE signifikan.* | 200-250 |
-| Introduction | *Contoh: Konteks: gap antara akurasi dan kepuasan pengguna. Gap: tidak ada studi yang mengkombinasikan CF+context. RQ: apakah CF+context meningkatkan satisfaction?* | 500-700 |
-| Related Work | | 700-1000 |
-| Method | | 800-1200 |
-| Results | | 500-800 |
-| Discussion | | 600-900 |
-| Conclusion | | 200-400 |
+| Abstract | Penelitian ini membandingkan algoritma Naive Bayes dan K-Nearest Neighbor untuk klasifikasi email spam menggunakan SpamAssassin Dataset. Evaluasi dilakukan menggunakan Accuracy, Precision, Recall, dan F1-Score. Hasil menunjukkan bahwa Naive Bayes memiliki performa lebih baik dibandingkan KNN. | 200-250 |
+| Introduction | Menjelaskan pentingnya deteksi email spam, perkembangan metode klasifikasi, kesenjangan penelitian, rumusan masalah, tujuan penelitian, dan kontribusi penelitian. | 500-700 |
+| Related Work |Membahas penelitian terdahulu mengenai klasifikasi email spam menggunakan Naive Bayes, KNN, dan metode machine learning lainnya serta menunjukkan research gap yang menjadi dasar penelitian ini| 700-1000 |
+| Method |Menjelaskan dataset SpamAssassin, preprocessing (case folding, tokenization, stopword removal, TF-IDF), implementasi Naive Bayes dan KNN, serta metode evaluasi menggunakan confusion matrix dan F1-Score.| 800-1200 |
+| Results |Menyajikan tabel dan grafik hasil Accuracy, Precision, Recall, F1-Score, serta waktu komputasi dari kedua algoritma berdasarkan lima kali percobaan.| 500-800 |
+| Discussion |Menginterpretasikan hasil eksperimen, membandingkan dengan penelitian sebelumnya, menjelaskan kelebihan Naive Bayes, keterbatasan penelitian, serta implikasi hasil penelitian.| 600-900 |
+| Conclusion |Menyimpulkan bahwa Naive Bayes memberikan performa terbaik pada SpamAssassin Dataset serta memberikan saran penelitian selanjutnya menggunakan dataset yang lebih beragam dan algoritma tambahan.| 200-400 |
 
 ---
 
@@ -134,21 +143,20 @@ Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 |--|-------|--------|--------|-----------|-----------|
 | *Contoh: RQ1* | *✓* | *✓* | *✓* | *✓* | *✓* |
 | *Contoh: Metrik-X* | *✗ ←* | *✗ ←* | *✓* | *✗ ←* | *✗ ←* |
-| RQ1 | | | | | |
-| RQ2 | | | | | |
-| Metrik utama | | | | | |
-| Variabel IV | | | | | |
-| Variabel DV | | | | | |
-| Klaim/kontribusi | | | | | |
+| RQ1 |✓|✓|✓|✓|✓|
+| RQ2 |✓|✓|✓|✓|✓|
+| Metrik utama |✓|✓|✓|✓|✓|
+| Variabel IV |✓|✓|✓|✓|✓|
+| Variabel DV |✓|✓|✓|✓|✓||
+| Klaim/kontribusi |✓|✓|✓|✓|✓|
 
 **Isi setiap sel:** ✓ (ada & konsisten), ✗ (missing), ~ (ada tapi inkonsisten)
 
 **Inkonsistensi yang ditemukan:**
-> ___________________________________________________
+> Tidak ditemukan inkonsistensi. Seluruh Research Question, variabel penelitian, metrik evaluasi, serta kontribusi penelitian telah dibahas secara konsisten pada setiap bagian paper.
 
 **Tindakan perbaikan:**
-> ___________________________________________________
-
+> Tetap melakukan pengecekan ulang setiap revisi agar seluruh bagian paper tetap konsisten dan tidak terjadi perubahan istilah maupun variabel penelitian.
 ---
 
 ## Latihan 3 — Writing Quality Check
@@ -156,16 +164,16 @@ Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi kualitasnya.
 
 **Paragraf asli:**
-> (tempel paragraf Anda di sini)
+> (Penelitian ini membandingkan algoritma Naive Bayes dan K-Nearest Neighbor untuk mengetahui algoritma yang mempunyai performa lebih baik dalam klasifikasi email spam. Hasil penelitian menunjukkan bahwa Naive Bayes mempunyai hasil yang lebih baik dibandingkan KNN sehingga dapat digunakan sebagai metode klasifikasi email spam.)
 
 | Kriteria | Evaluasi | Perbaikan |
 |----------|---------|-----------|
-| Clarity | *Contoh: kalimat ke-3 ambigu — "performa" bisa berarti accuracy atau speed* | *Ubah menjadi: "accuracy meningkat..."* |
-| Precision | | |
-| Conciseness | | |
+| Clarity | Kalimat cukup jelas tetapi belum menyebutkan metrik evaluasi yang digunakan. | Menambahkan informasi mengenai metrik Accuracy, Precision, Recall, dan F1-Score. |
+| Precision |Istilah "hasil lebih baik" masih umum.|Diganti menjadi "memperoleh nilai F1-Score dan Accuracy lebih tinggi".|
+| Conciseness |Terdapat pengulangan frasa "algoritma".|Menggabungkan beberapa kalimat agar lebih ringkas.|
 
 **Paragraf setelah perbaikan:**
-> (tulis paragraf yang sudah diperbaiki)
+> (Penelitian ini membandingkan performa algoritma Naive Bayes dan K-Nearest Neighbor dalam klasifikasi email spam menggunakan SpamAssassin Dataset. Evaluasi dilakukan berdasarkan nilai Accuracy, Precision, Recall, dan F1-Score. Hasil eksperimen menunjukkan bahwa Naive Bayes memperoleh nilai Accuracy dan F1-Score yang lebih tinggi dibandingkan K-Nearest Neighbor sehingga lebih efektif digunakan untuk klasifikasi email spam pada dataset yang digunakan.)
 
 ---
 
@@ -173,5 +181,5 @@ Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi ku
 
 > Apa perbedaan antara menulis "tentang" riset dan menulis sebagai "argumen" riset? Bagaimana urutan penulisan (Method → Discussion → Introduction) mengubah kualitas tulisan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Menulis tentang riset hanya menjelaskan proses atau hasil penelitian secara deskriptif, sedangkan menulis sebagai argumen riset berarti menyusun seluruh isi penelitian secara logis untuk membuktikan bahwa metode yang digunakan mampu menjawab rumusan masalah dan memberikan kontribusi ilmiah. Setiap bagian dalam paper harus saling berkaitan mulai dari latar belakang, metode, hasil, hingga kesimpulan.
+> Urutan penulisan Method → Results → Discussion → Introduction membantu menghasilkan tulisan yang lebih konsisten karena peneliti telah mengetahui proses dan hasil penelitian terlebih dahulu. Dengan demikian, pendahuluan dapat disusun sesuai dengan temuan yang diperoleh sehingga seluruh isi paper memiliki alur yang jelas, tidak bertentangan, dan lebih mudah dipahami oleh pembaca.

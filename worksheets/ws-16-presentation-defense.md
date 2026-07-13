@@ -86,31 +86,44 @@ Prediksi pertanyaan berdasarkan kategori:
 DEFENSE PREPARATION
 
 Slide Deck Plan:
-  Total slides   : ____ (target: 10-12 konten + title/closing)
-  Time per slide : ~2 min
-  Total time     : ____ menit
+
+Total slides   : 11 (10 slide materi + 1 slide penutup)
+Time per slide : ±1,5 menit
+Total time     : 15 menit
 
 Slide Outline:
+
 | # | Pesan Utama | Visual | Waktu |
 |---|-------------|--------|-------|
-| 1 | Title       |        | 30s   |
-| 2 | Problem     |        | 2min  |
-| 3 | Gap + RQ    |        | 2min  |
-| ..|             |        |       |
+| 1 | Judul Penelitian | Cover | 1 menit |
+| 2 | Latar Belakang | Diagram email spam | 2 menit |
+| 3 | Research Gap & Research Question | Tabel gap penelitian | 1,5 menit |
+| 4 | Metode Penelitian | Flowchart penelitian | 2 menit |
+| 5 | Dataset & Preprocessing | Diagram preprocessing | 1,5 menit |
+| 6 | Hasil Eksperimen | Tabel hasil | 2 menit |
+| 7 | Visualisasi Hasil | Bar chart Accuracy & F1-Score | 2 menit |
+| 8 | Analisis & Limitasi | Diagram kesimpulan | 1,5 menit |
+| 9 | Kesimpulan | Ringkasan poin penting | 1 menit |
+|10 | Kontribusi & Future Work | Diagram roadmap | 0,5 menit |
+|11 | Terima Kasih & Tanya Jawab | Closing | 0,5 menit |
 
 Anticipatory Defense Matrix:
+
 | Kategori | Pertanyaan Potensial | Jawaban (CER) |
-|----------|---------------------|---------------|
-| Problem  |                     |               |
-| Gap      |                     |               |
-| Method   |                     |               |
-| Results  |                     |               |
-| Generalization |               |               |
+|----------|----------------------|---------------|
+| Problem | Mengapa memilih klasifikasi email spam? | Email spam masih menjadi masalah keamanan digital. Penelitian menunjukkan jumlah spam terus meningkat sehingga diperlukan metode klasifikasi yang akurat. Oleh karena itu penelitian ini membandingkan dua algoritma yang umum digunakan. |
+| Gap | Apa perbedaan penelitian Anda dengan penelitian sebelumnya? | Penelitian ini membandingkan Naive Bayes dan KNN menggunakan SpamAssassin Dataset dengan evaluasi Accuracy, Precision, Recall, dan F1-Score secara konsisten pada beberapa kali eksperimen. |
+| Method | Mengapa memilih Naive Bayes dan KNN? | Kedua algoritma merupakan metode klasifikasi yang populer dan memiliki karakteristik berbeda sehingga menarik untuk dibandingkan pada data email spam. |
+| Results | Mengapa Naive Bayes memiliki hasil lebih baik? | Naive Bayes bekerja efektif pada data teks hasil TF-IDF karena menghitung probabilitas kemunculan kata sehingga menghasilkan F1-Score lebih tinggi. |
+| Generalization | Apakah hasil ini dapat diterapkan pada dataset lain? | Dapat dijadikan referensi, namun perlu validasi menggunakan dataset lain karena penelitian ini hanya menggunakan SpamAssassin Dataset. |
 
 Latihan:
-  Latihan 1: [tanggal] — [catatan timing & feedback]
-  Latihan 2: [tanggal] — [catatan timing & feedback]
-  Latihan 3: [tanggal] — [catatan timing & feedback]
+
+Latihan 1 : 18 Juni 2026 — Waktu presentasi masih 17 menit, perlu dipersingkat.
+
+Latihan 2 : 20 Juni 2026 — Penyampaian lebih lancar, waktu menjadi 15 menit.
+
+Latihan 3 : 22 Juni 2026 — Sudah sesuai target, siap untuk presentasi.
 ```
 
 ---
@@ -121,17 +134,17 @@ Rencanakan presentasi 15 menit untuk riset Anda.
 
 | # | Pesan Utama | Visual yang Digunakan | Waktu |
 |---|-------------|----------------------|-------|
-| 1 | *Contoh: Judul + konteks — rekomendasi vs kepuasan* | *Title slide, gambar sistem* | *1 min* |
-| 2 | *Contoh: Problem — RMSE tinggi tapi satisfaction rendah (45/100)* | *Bar chart: satisfaction vs RMSE per sistem* | *2 min* |
-| 3 | *Contoh: Gap + RQ — belum ada CF+context untuk satisfaction* | *Tabel gap literatur* | *1.5 min* |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
+| 1 | Judul penelitian dan identitas | Cover penelitian | 1 menit |
+| 2 | Latar belakang pentingnya klasifikasi email spam | Ilustrasi email spam dan statistik spam | 2 menit |
+| 3 | Research Gap dan Research Question | Tabel penelitian terdahulu | 1,5 menit |
+| 4 |Metode penelitian|Flowchart penelitian|2 menit|
+| 5 |Dataset dan preprocessing|Diagram preprocessing (Case Folding, Tokenization, Stopword Removal, TF-IDF)|1,5 menit|
+| 6 |Hasil eksperimen|Tabel Accuracy, Precision, Recall, dan F1-Score|2 menit|
+| 7 |Visualisasi hasil|Bar Chart dan Box Plot|2 menit|
+| 8 |Analisis hasil, limitation, dan future work|Diagram analisis|1,5 menit|
+| 9 |Kesimpulan dan kontribusi penelitian|Ringkasan poin utama|1,5 menit|
 
-**Total waktu estimasi:** ____ menit
+**Total waktu estimasi:** 15 menit menit
 
 ---
 
@@ -141,11 +154,11 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 
 | # | Kategori | Pertanyaan | Claim | Evidence | Reasoning |
 |---|----------|-----------|-------|----------|-----------|
-| 1 | *Problem* | *Contoh: Mengapa fokus kepuasan, bukan akurasi?* | *Akurasi tinggi tidak menjamin kepuasan* | *Survey: 45/100 satisfaction meski RMSE 0.87* | *Gap antara metrik teknis dan pengalaman pengguna* |
-| 2 | *Method* | *Contoh: Mengapa hanya 3 dataset?* | *3 dataset mewakili variasi: small-clean, medium-clean, medium-noisy* | *Tabel karakteristik dataset di Bab Method* | *Generalisasi perlu validasi lanjut — tercatat sebagai limitasi* |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Problem | Mengapa memilih klasifikasi email spam? | Email spam masih menjadi masalah penting dalam keamanan informasi | Banyak email spam mengandung phishing dan malware. |Metode klasifikasi diperlukan agar email spam dapat dideteksi |
+| 2 | Method | Mengapa menggunakan Naive Bayes dan KNN?| Kedua algoritma merupakan metode klasifikasi yang banyak digunakan. | Banyak penelitian terdahulu menggunakan kedua algoritma tersebut. | Perbandingan dilakukan untuk mengetahui algoritma yang lebih efektif pada SpamAssassin Dataset. |
+| 3 |Results|Mengapa Naive Bayes memperoleh hasil lebih baik?|Naive Bayes lebih sesuai untuk data teks.|Nilai Accuracy dan F1-Score lebih tinggi dibandingkan KNN.|TF-IDF menghasilkan representasi fitur yang sesuai dengan asumsi probabilistik Naive Bayes.|
+| 4 |Limitation|Mengapa hanya menggunakan satu dataset?|Penelitian difokuskan pada SpamAssassin Dataset.|Dataset memiliki jumlah data yang cukup dan banyak digunakan pada penelitian email spam.|Pengujian pada dataset lain direncanakan sebagai penelitian lanjutan.|
+| 5 |Generalization|Apakah hasil dapat diterapkan pada dataset lain?|Belum tentu secara langsung.|Setiap dataset memiliki karakteristik yang berbeda.|Diperlukan validasi tambahan agar hasil dapat digeneralisasi.|
 
 ---
 
@@ -154,16 +167,14 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan dan evaluasi jawaban Anda.
 
 | # | Pertanyaan | Jawaban Saya | Evaluasi |
-|---|-----------|-------------|---------|| *1* | *Contoh: "Mengapa tidak membandingkan dengan metode Y?"* | *Contoh: "Karena Y memerlukan dataset labeled yang tidak tersedia. Disebutkan sebagai limitasi di halaman X."* | *[✓] Direct [✓] Data-based [✓] Honest* || 1 | | | [ ] Direct [ ] Data-based [ ] Honest |
-| 2 | | | [ ] Direct [ ] Data-based [ ] Honest |
-| 3 | | | [ ] Direct [ ] Data-based [ ] Honest |
+|---|-----------|-------------|---------|| 1 | Mengapa memilih SpamAssassin Dataset? | Karena merupakan dataset publik yang banyak digunakan pada penelitian klasifikasi email spam sehingga memudahkan perbandingan hasil penelitian | [✓] Direct [✓] Data-based [✓] Honest || 1 | | | [ ] Direct [ ] Data-based [ ] Honest |
+| 2 |Mengapa tidak menggunakan algoritma Deep Learning?|Penelitian ini bertujuan membandingkan algoritma machine learning klasik yang lebih sederhana dan memiliki waktu komputasi lebih cepat. Penggunaan Deep Learning menjadi pengembangan penelitian selanjutnya.| [✓] Direct [✓] Data-based [✓] Honest |
+| 3 |Apa kelemahan penelitian Anda?|Penelitian hanya menggunakan satu dataset dan lima kali eksperimen sehingga hasil belum dapat digeneralisasi secara luas.| [✓] Direct [✓] Data-based [✓] Honest |
 
 **Pertanyaan yang paling sulit dijawab:**
-> ___________________________________________________
-
+> Bagaimana performa algoritma apabila diterapkan pada dataset email berbahasa Indonesia atau dataset yang memiliki karakteristik berbeda?
 **Apa yang perlu disiapkan lebih baik:**
-> ___________________________________________________
-
+> Menyiapkan referensi penelitian yang menggunakan dataset lain serta memahami karakteristik berbagai algoritma klasifikasi sehingga dapat menjawab pertanyaan penguji dengan lebih mendalam.
 ---
 
 ## Refleksi
@@ -171,7 +182,7 @@ Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan 
 > Dari seluruh proses WS-01 sampai WS-16 — dari paradigma riset hingga presentasi — bagian mana yang paling mengubah cara Anda berpikir tentang riset? Apa satu hal yang akan selalu Anda terapkan di riset berikutnya?
 
 **Insight terbesar:**
-> ___________________________________________________
+> Bagian yang paling mengubah cara berpikir adalah proses analisis hasil penelitian dan penyusunan argumen ilmiah. Penelitian bukan hanya menghasilkan nilai Accuracy atau F1-Score yang tinggi, tetapi juga mampu menjelaskan mengapa hasil tersebut diperoleh, bagaimana keterbatasannya, serta apa kontribusinya terhadap penelitian sebelumnya. Selain itu, hasil yang tidak sesuai hipotesis tetap memiliki nilai ilmiah apabila dianalisis secara objektif.
 
 **Yang akan selalu diterapkan:**
-> ___________________________________________________
+> Pada penelitian berikutnya, setiap tahap penelitian akan didokumentasikan secara lengkap, mulai dari perencanaan eksperimen, preprocessing, pengujian, analisis hasil, hingga penyusunan laporan. Dokumentasi yang baik membuat penelitian lebih mudah direproduksi, dipertanggungjawabkan secara ilmiah, dan memberikan kontribusi yang lebih bermanfaat bagi penelitian selanjutnya.
